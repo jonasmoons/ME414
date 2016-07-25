@@ -10,8 +10,8 @@ author:
     <s.mikhaylov@ucl.ac.uk>
 date: 'Version: '
 title: |
-    ME114 Introduction to Data Science and Big Data Analytics\
-    <span><http://github.com/kbenoit/ME114></span>\
+    ME414 Introduction to Data Science and Big Data Analytics\
+    <span><http://github.com/kbenoit/ME414></span>\
     LSE Methods Summer Programme 2015
 ...
 
