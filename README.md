@@ -153,7 +153,7 @@ Data types and formats, record cleaning, linkage, SQL, JSON.
 
 * [Lecture Notes](day2/ME414_day2.pdf)
 * [Assignment 2 as R markdown](day2/ME414_assignment2_LASTNAME_FIRSTNAME.Rmd)
-<!-- - Assignment 2 **solution** as [R markdown](day2/ME414_assignment2_solution.Rmd) -->
+[//]: # Assignment 2 **solution** as [R markdown](day2/ME414_assignment2_solution.Rmd)
 
 ##### Required reading:
 
