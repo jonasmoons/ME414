@@ -40,12 +40,13 @@ An introduction to quantitative methods at any level would serve as a very usefu
 
 We strongly recommend you spend some of July and August before the course reading some of the following materials:
 
-* James et al (2013), Chapters 1--2. Note: The book is available from the authors' page [here](http://www-bcf.usc.edu/~gareth/ISL/).
+* James et al. (2013) _An Introduction to Statistical Learning: With applications in R_, Springer, Chapters 1--2. Note: The book is available from the authors' page [here](http://www-bcf.usc.edu/~gareth/ISL/).
 * [*An Introduction to R*](https://cran.r-project.org/doc/manuals/r-release/R-intro.pdf).
 * Downloading and installing [RStudio](http://www.rstudio.com) and [R](https://cran.r-project.org) on your computer.
 * Data Camp [R tutorials](https://www.datacamp.com/courses/free-introduction-to-r).
 * Data Camp [R Markdown tutorials](https://www.datacamp.com/courses/reporting-with-r-markdown), first chapter.
-* [R Codeschool](http://tryr.codeschool.com/)
+* [R Codeschool](http://tryr.codeschool.com/).
+* Garrett Grolemund and Hadley Wickham (2016) _R for Data Science_, O'Reilly Media, Chapters 1-3. Note: Online version is available from the authors' page [here](http://r4ds.had.co.nz/index.html).
 
 
 
@@ -60,8 +61,10 @@ Computer-based exercises will feature prominently in the course, especially in t
 
 The primary texts are:
 
-* James et al. (2013) _An Introduction to Statistical Learning: With applications in R_. Springer. Note: The book is available from the authors' page [here](http://www-bcf.usc.edu/~gareth/ISL/).
+* James et al. (2013) _An Introduction to Statistical Learning: With applications in R_, Springer. Note: The book is available from the authors' page [here](http://www-bcf.usc.edu/~gareth/ISL/).
+* Garrett Grolemund and Hadley Wickham (2016) _R for Data Science_, O'Reilly Media. Note: Online version is available from the authors' page [here](http://r4ds.had.co.nz/index.html).
 * Zumel, N. and Mount, J. (2014). _Practical Data Science with R_. Manning Publications.
+
 
 The following are supplemental texts which you may also find useful:
 
@@ -113,8 +116,7 @@ You can also subscribe to the repository if you have [a GitHub account](https://
 
 **Dr. Slava Mikhaylov** is a Senior Lecturer in Quantitative Methods at UCL and has been teaching quantitative methods at UCL Political Science department for the last five years. He’s currently involved in an ESRC Big Data infrastructure investment initiative -- Consumer Data Research Centre. One of Slava’s responsibilities in the Centre is development and provision of big data analytics training for academic and professional community (data users). In addition Slava Mikhaylov is deputy director of UCL Q-Step Centre, an ESRC-funded initiative to promote quantitative methods.
 
-**Jack Blumenau** will serve as the lab assistant for this course.
-
+**Jack Blumenau** is a PhD student at LSE Government Department, starting in the autumn his postdoc at LSE Methodology Department. Jack serve as the lab assistant for this course and deliver one of the sessions related to his PhD research.
 
 
 ### Course Schedule
@@ -137,7 +139,8 @@ We will use this session to get to know the range of interests and experience st
 * Downloading and installing [RStudio](http://www.rstudio.com) and [R](https://cran.r-project.org) on your computer.
 * Data Camp [R tutorials](https://www.datacamp.com/courses/free-introduction-to-r).
 * Data Camp [R Markdown tutorials](https://www.datacamp.com/courses/reporting-with-r-markdown), first chapter.
-* [R Codeschool](http://tryr.codeschool.com/)
+* [R Codeschool](http://tryr.codeschool.com/).
+* Garrett Grolemund and Hadley Wickham (2016) _R for Data Science_, O'Reilly Media, Chapters 1-3. Note: Online version is available from the authors' page [here](http://r4ds.had.co.nz/index.html).
 
 
 ##### Recommended Reading:
@@ -148,7 +151,7 @@ We will use this session to get to know the range of interests and experience st
 
 
 #### __*Tuesday, August 16: Data structures and databases [KB, SM]*__  
-Data types and formats, record cleaning, linkage, SQL, JSON.
+Data types and formats, record cleaning, linkage, SQL, JSON, massive data processing.
  
 ##### Resources
 
@@ -158,10 +161,14 @@ Data types and formats, record cleaning, linkage, SQL, JSON.
 <!--- * Assignment 2 **solution** as [R markdown](day2/ME414_assignment2_solution.Rmd) -->
 
 ##### Required reading:
+* Grolemund and Wickham, Chapters 4, 8-10.
+* Lantz, Chapters 2, 12.
+* Zumel and Mount, Chapters 2-4.
+
 
 ##### Recommended Reading:
-
-
+* Leskovec et al., Chapters 1-3.
+* Kromer, Philip and Russell Jurney (2016). _Big Data for Chimps_. O'Reilly Media. Chapters 1-2, 5-9.
 
 #### __*Wednesday, August 17: Linear Regression [SM]*__ 
 The basic linear regression model, with a focus on prediction.
@@ -174,7 +181,7 @@ The basic linear regression model, with a focus on prediction.
 <!--- * Assignment 3 **solution** as [R markdown](day3/ME414_assignment3_solution.Rmd) -->
 
 ##### Required reading:
-*  James et al. Chapter 3.
+*  James et al., Chapter 3.
 
 ##### Recommended Reading:
 * Zumel and Mount, Chapter 7.1.
@@ -193,11 +200,11 @@ Logistic regression, discriminant analysis, Naive Bayes, evaluating model perfor
 <!--- * Assignment 4 **solution** as [R markdown](day4/ME414_assignment4_solution.Rmd) -->
 
 ##### Required reading:
-* James et al. Chapter 4.
+* James et al., Chapter 4.
 
 ##### Recommended Reading:
-* Lesmeister Chapter 3.
-* Zumel and Mount Chapters 5, 6, 7.2.
+* Lesmeister, Chapter 3.
+* Zumel and Mount, Chapters 5, 6, 7.2.
 * Lantz, Chapters 3-4, 10.
 
 
@@ -213,10 +220,10 @@ Cross-validation, bootstrap, ridge and lasso.
 <!--- * Assignment 5 **solution** as [R markdown](day5/ME414_assignment5_solution.Rmd) -->
 
 ##### Required reading:
-* James et al. Chapter 5-6.
+* James et al., Chapter 5-6.
 
 ##### Recommended Reading:
-* Lesmeister Chapter 4.
+* Lesmeister, Chapter 4.
 
 
 #### __*Monday, August 22: Non-linear models and tree-based methods [SM]*__
@@ -230,11 +237,11 @@ GAMs, local regression, decision trees, random forest, boosting.
 <!--- * Assignment 6 **solution** as [R markdown](day6/ME414_assignment6_solution.Rmd) -->
 
 ##### Required reading:
-* James et al. Chapter 7-8.
+* James et al., Chapter 7-8.
 
 ##### Recommended Reading:
-* Lesmeister Chapter 6.
-* Zumel and Mount Chapter 9.1-9.3.
+* Lesmeister, Chapter 6.
+* Zumel and Mount, Chapter 9.1-9.3.
 * Muchlinksi, D., Siroky, D., Jingrui, H., Kocher, M., (2016) ``Comparing Random Forest with Logistic Regression for Predicting Class-Imbalanced Civil War Onset Data.'' _Political Analysis_, 24(1): 87-103.
 
 
@@ -252,13 +259,13 @@ Cluster analysis, PCA, correspondence analysis, association rules.
 <!--- * Assignment 7 **solution** as [R markdown](day7/ME414_assignment7_solution.Rmd) or [html](http://htmlpreview.github.io/?https://github.com/kbenoit/ME414/blob/master/day7/ME414_assignment7_solution.html) -->
 
 ##### Required reading:
-* James et al. Chapter 10.
+* James et al., Chapter 10.
 
 ##### Recommended Reading:
-* Lesmeister Chapter 5, 8-9.
-* Zumel and Mount Chapter 8.
+* Lesmeister, Chapter 5, 8-9.
+* Zumel and Mount, Chapter 8.
 * Lantz, Chapters 8-9
-* Leskovec et al. Chapter 11.
+* Leskovec et al., Chapter 11.
 
 
 #### __*Wednesday, August 24: Text analysis [KB]*__
@@ -331,6 +338,8 @@ Working with the Twitter API, Facebook API, JSON data, and examples.
 * http://rcrastinate.blogspot.co.uk/2015/02/mapping-world-with-tweets-including-gif.html
 * https://github.com/twitter/AnomalyDetection
 * https://github.com/pablobarbera/streamR
+* Zafarani et al., Chapters 1-4.
+* Matthew Russell (2013). _Mining the Social Web_. O'Reilly Media. 2nd edition.
 
 
 ### Assessment
