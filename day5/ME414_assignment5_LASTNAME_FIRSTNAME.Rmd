@@ -1,12 +1,13 @@
 ---
-title: "Assignment 5 - Resampling Methods"
+title: "Exercise 5 - Resampling Methods and Model Selection"
 author: "Ken Benoit and Slava Mikhaylov"
 output: html_document
 ---
 
-Assignments for the course focus on practical aspects of the concepts covered in the lectures. Assignments are largely based on the material covered in James et al (2013). You will start working on the assignment in the lab sessions after the lectures, but may need to finish them after class.
+Assignments for the course focus on practical aspects of the concepts covered in the lectures. Assignments are based on the material covered in James et al. You will start working on the assignment in the lab sessions after the lectures, but may need to finish them after class.
 
-You will be asked to submit your assignments via Moodle by 7pm on the day of the class. We will subsequently open up solutions to the problem sets. 
+Please submit your assignments via Moodle by 7pm on the day of the class. We will subsequently open up solutions to the problem sets. 
+
 
 You will need to load the core library for the course textbook:
 ```{r}
@@ -14,140 +15,49 @@ library(ISLR)
 ```
 
 
-## Exercise 5.1: Cross-validation
+## Exercise 5.1
 
-Logistic regression may be used to predict the probability of `default` using `income` and `balance` on the [Default](http://bit.ly/R_ISLR_Default) dataset. Here we will estimate the test error of this logistic regression model using the validation set approach. Do not forget to set a random seed before beginning your analysis.
-
-   (a) Fit a logistic regression model that uses `income` and `balance` to predict `default`.
-   (b) Using the validation set approach, estimate the test error of this model. In order to do this, you must perform the following steps:
-     i. Split the sample set into a training set and a validation set.
-     
-        For this you will find the `sample()` function useful.  To take a 5-observation sample of 10 items, you would index the rows using an index vector generated from `sample(10, 5)`.  For instance:
-        
-     
-     ii. Fit a multiple logistic regression model using only the training observations.
-     iii. Obtain a prediction of default status for each individual in the validation set by computing the posterior probability of default for that individual, and classifying the individual to the `default` category if the posterior probability is greater than 0.5.
-     iv. Compute the validation set error, which is the fraction of the observations in the validation set that are misclassified.
-   (c) Repeat the process in (b) three times, using three different splits of the observations into a training set and a validation set. Comment on the results obtained.
-   (d) Now consider a logistic regression model that predicts the probability of `default` using `income`, `balance`, and a dummy variable for `student`. Estimate the test error for this model using the validation set approach. Comment on whether or not including a dummy variable for `student` leads to a reduction in the test error rate.
-```{r}
-exampledata <- Default[1:10, ]  # select just the first 10 rows of Default
-exampledata
-```
-The create a random index variable and sample the dataframe accordingly.  `nrow()` will give you the row dimension (total number of rows) of a matrix or data.frame object.
-```{r}
-set.seed(100)
-sampleIndex <- sample(nrow(exampledata), 5)
-sampleIndex
-
-exampledata[sampleIndex, ]   # just the rows randomly chosen
-exampledata[-sampleIndex, ]  # just the rows NOT randomly chosen
-```
-Use this approach to split the data into two sets, a training set, and a test set.
-
-To compute the test error, you will predict the outcome for the test set (using the `newdata` argument in `predict.glm()`), and compare this to the actual values from the test set using `table()`.
+In the lab session for this topic (Sections 5.3.2 and 5.3.3 in James et al.), we saw that the `cv.glm()` function can be used in order to compute the LOOCV test error estimate. Alternatively, one could compute those quantities using just the `glm()` and `predict.glm()` functions, and a `for` loop. You will now take this approach in order to compute the LOOCV error for a simple logistic regression model on the `Weekly` data set. Recall that in the context of classification problems, the LOOCV error is given in Section 5.1.5 (5.4, page 184).
 
 
-## Exercise 5.2: Using the bootstrap
+ (a) Fit a logistic regression model that predicts `Direction` using `Lag1` and `Lag2`.
 
-  One common use of the bootstrap estimator in statistical analysis is to estimate the sampling variance of an estimator with no known sampling distribution.  A classic example is the *median*: unlike the mean, there is no known sampling distribution for a median.  One common method for computing standard errors (or confidence intervals) from a sample for the median is to use the bootstrap.
+ (b) Fit a logistic regression model that predicts `Direction` using `Lag1` and `Lag2` using *all but the first observation*.
 
-Here is an example, using a loop:
-```{r}
-nreplicates <- 1000
-bsresult <- numeric(nreplicates)  # set up a results variable, length 1000
-for (i in 1:nreplicates) {
-    bsresult[i] <- median(sample(Default$income, replace = TRUE))
-}
-mean(bsresult)          # the typical median from the bootstrapped replicates
-median(Default$income)  # median of the actual income data, non-sampled
-sd(bsresult)            # bootstrapped median of income
-```
+ (c) Use the model from (b) to predict the direction of the first observation. You can do this by predicting that the first observation will go up if `P(Direction="Up"|Lag1, Lag2) > 0.5`. Was this observation correctly classified?
 
-If we want to make this into a function, we could make it more general this way:
-```{r}
-bootstrapMedianSE <- function(variable, nreplicates) {
-    bsresult <- numeric(nreplicates)  # set up a results variable, length 1000
-    for (i in 1:nreplicates) {
-        bsresult[i] <- median(sample(variable, replace = TRUE))
-    }
-    sd(bsresult)
-}
-```
-Now we an apply this to any variable in the `Default` dataset to estimate the standard error of the median for that variable:
-```{r}
-bootstrapMedianSE(Default$balance, 500)
-bootstrapMedianSE(Default$balance, 500)
-```
+ (d) Write a `for` loop from i=1 to i=n, where n is the number of observations in the data set, that performs each of the following steps:
 
-### Some extra context on bootstrapping in R:
+    i. Fit a logistic regression model using all but the i-th observation to predict `Direction` using `Lag1` and `Lag2`.
+    
+    ii. Compute the posterior probability of the market moving up for the i-th observation. 
+    
+    iii. Use the posterior probability for the i-th observation in order to predict whether or not the market moves up. 
+    
+    iv. Determine whether or not an error was made in predicting the direction for the i-th observation. If an error was made, then indicate this as a 1, and otherwise indicate it as a 0.
 
-For nearly everything you can think of in R, there is probably a package for it already.  For instance:
-```{r}
-require(fortunes)
-fortune()
-```
-
-There is a package for bootstrapping that makes the process a bit easier, but it requires that you wrap the function output to be bootstrapped in a very specific format: the first argument in the function must be `data`, and the second argument `index`.  For instance:
-```{r}
-# here is a function for the median
-bootMedian <- function(data, index) {
-  data <- data[index, ]
-  median(data$income)
-}
-require(boot)
-boot(Default, bootMedian, 1000)
-```
-
-### and now the questions to answer:
-
-For the exercise, we consider the use of a logistic regression model to predict the probability of `default` using `income` and `balance` on the [Default](http://bit.ly/R_ISLR_Default) dataset. In particular, we will now compute estimates for the standard errors of the `income` and `balance` logistic regression coefficients in two different ways (a) using the standard formula for computing the standard errors in the [glm()](http://bit.ly/R_glm) function, and (b) using the bootstrap. Do not forget to set a random seed before beginning your analysis.
-
-   (a) Using the [summary()](http://bit.ly/R_summary) and [glm()](http://bit.ly/R_glm) functions, determine the estimated standard errors for the coefficients associated with income and balance in a multiple logistic regression model that uses both predictors.  
-   
-   (b) Using the same model specification, estimate the standard errors for the coefficients of `income` and `balance` using the bootstrap. For this, you will combine the indexing functions on the dataset with the looping method shown above.  (It is up to you whether you want to code this as a general function or hard-wire the loop for this example.)  How does these differ from those computed analytically by the [glm()](http://bit.ly/R_glm) function?
+ (e) Take the average of the n numbers obtained in (d)iv in order to obtain the LOOCV estimate for the test error. Comment on the results.
 
 
+## Exercise 5.2
 
-## Extra Credit 1: Leave-out one cross-validation
+In this exercise, we will predict the number of applications received using the other variables in the `College` data set.
 
-In Sections 5.3.2 and 5.3.3 in James et al (2013), it is shown that [cv.glm()](http://bit.ly/R_cv_glm) function can be used to compute the LOOCV test error estimate. Alternatively, one could compute those quantities using just the [glm()](http://bit.ly/R_glm) and `predict.glm()` functions, and a [for()](http://bit.ly/R_Control) loop. You will now use this approach to compute the LOOCV error for a simple logistic regression model on the [Weekly](http://bit.ly/R_ISLR_Weekly) dataset. Recall how the LOOCV error is covered in the context of classification problems.
+(a) Split the data set into a training set and a test set.
+(b) Fit a linear model using least squares on the training set, and
+report the test error obtained.
+(c) Fit a ridge regression model on the training set, with $\lambda$ chosen by cross-validation. Report the test error obtained.
+(d) Fit a lasso model on the training set, with $\lambda$ chosen by cross-validation. Report the test error obtained, along with the number of non-zero coefficient estimates.
+(e) Fit a PCR model on the training set, with $M$ chosen by cross-validation. Report the test error obtained, along with the value of $M$ selected by cross-validation.
+(f) Fit a PLS model on the training set, with $M$ chosen by cross-validation. Report the test error obtained, along with the value of $M$ selected by cross-validation.
+(g) Comment on the results obtained. How accurately can we predict the number of college applications received? Is there much difference among the test errors resulting from these five approaches?
 
-   (a) Fit a logistic regression model that predicts `Direction` using `Lag1` and `Lag2`.
-   (b) Fit a logistic regression model that predicts `Direction` using `Lag1` and `Lag2` *using all but the first observation*.
-   (c) Use the model from (b) to predict the direction of the first observation. You can do this by predicting that the first observation will go up if `P(Direction="Up"|Lag1, Lag2)` > 0.5. Was this observation correctly classified?
-   (d) Write a for loop from $i=1$ to $i=n$ ,where $n$ is the number of observations in the data set, that performs each of the following steps:
-    i. Fit a logistic regression model using all but the $i$th observation to predict `Direction` using `Lag1` and `Lag2`.
-    ii. Compute the posterior probability of the market moving up for the $i$th observation.
-    iii. Use the posterior probability for the $i$th observation in order to predict whether or not the market moves up.
-    iv. Determine whether or not an error was made in predicting the direction for the $i$th observation. If an error was made, then indicate this as a 1, and otherwise indicate it as a 0.
-   (e) Take the average of the $n$ numbers obtained in (d)iv in order to obtain the LOOCV estimate for the test error. Comment on the results.
-   
-   
-## Extra Credit 2: Cross-validation on a simulated dataset
 
-We will now perform cross-validation on a simulated data set.
+## Exercise 5.3 (Optional)
 
-   (a) Generate a simulated data set as follows:
-```{R}
-   set.seed(1)
-   y=rnorm(100)
-   x=rnorm(100)
-   y=x-2*x^2+rnorm(100)
-```
-In this data set, what is $n$ and what is $p$? Write out the model used to generate the data in equation form.
+We will now try to predict per capita crime rate in the `Boston` data set.
 
-   (b) Create a scatterplot of $X$ against $Y$. Comment on what you find.
-   
-   (c) Set a random seed, and then compute the LOOCV errors that result from fitting the following four models using least squares:
-   1. $Y = \beta_0 + \beta_1 X + \epsilon$
-   2. $Y = \beta_0 + \beta_1 X + \beta_2 X_2 + \epsilon$
-   3. $Y = \beta_0 + \beta_1 X + \beta_2 X_2 + \beta_3 X_3 + \epsilon$
-   4. $Y = \beta_0 + \beta_1 X + \beta_2 X_2 + \beta_3 X_3 + \beta_4 X_4 + \epsilon$.
+(a) Try out some of the regression methods explored this week, such as best subset selection, the lasso, ridge regression, and PCR. Present and discuss results for the approaches that you consider.
+(b) Propose a model (or set of models) that seem to perform well on this data set, and justify your answer. Make sure that you are evaluating model performance using validation set error, cross-validation, or some other reasonable alternative, as opposed to using training error.
+(c) Does your chosen model involve all of the features in the data set? Why or why not?
 
-Note you may find it helpful to use the `data.frame()` function
-to create a single data set containing both $X$ and $Y$.
-
-   (d) Repeat (c) using another random seed, and report your results. Are your results the same as what you got in (c)? Why?
-   (e) Which of the models in (c) had the smallest LOOCV error? Is this what you expected? Explain your answer.
-   (f) Comment on the statistical significance of the coefficient estimates that results from fitting each of the models in (c) using least squares. Do these results agree with the conclusions drawn based on the cross-validation results?

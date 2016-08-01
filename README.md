@@ -148,7 +148,7 @@ We will use this session to get to know the range of interests and experience st
 * Patrick Burns, 2011. _The R Inferno_.  Available [here](http://www.burns-stat.com/pages/Tutor/R_inferno.pdf).
 * Lantz, Ch. 2.
 
-
+***
 
 #### __*Tuesday, August 16: Data structures and databases [KB, SM]*__  
 Data types and formats, record cleaning, linkage, SQL, JSON, massive data processing.
@@ -170,6 +170,8 @@ Data types and formats, record cleaning, linkage, SQL, JSON, massive data proces
 * Leskovec et al., Chapters 1-3.
 * Kromer, Philip and Russell Jurney (2016). _Big Data for Chimps_. O'Reilly Media. Chapters 1-2, 5-9.
 
+***
+
 #### __*Wednesday, August 17: Linear Regression [SM]*__ 
 The basic linear regression model, with a focus on prediction.
 
@@ -187,7 +189,7 @@ The basic linear regression model, with a focus on prediction.
 * Zumel and Mount, Chapter 7.1.
 * Lantz, Chapter 6
 
-
+***
 
 #### __*Thursday, August 18: Classification [SM]*__ 
 Logistic regression, discriminant analysis, Naive Bayes, evaluating model performance.
@@ -207,7 +209,7 @@ Logistic regression, discriminant analysis, Naive Bayes, evaluating model perfor
 * Zumel and Mount, Chapters 5, 6, 7.2.
 * Lantz, Chapters 3-4, 10.
 
-
+***
 
 #### __*Friday, August 19: Resampling methods, model selection and regularization [KB]*__
 Cross-validation, bootstrap, ridge and lasso.
@@ -225,6 +227,7 @@ Cross-validation, bootstrap, ridge and lasso.
 ##### Recommended Reading:
 * Lesmeister, Chapter 4.
 
+***
 
 #### __*Monday, August 22: Non-linear models and tree-based methods [SM]*__
 GAMs, local regression, decision trees, random forest, boosting.
@@ -244,6 +247,7 @@ GAMs, local regression, decision trees, random forest, boosting.
 * Zumel and Mount, Chapter 9.1-9.3.
 * Muchlinksi, D., Siroky, D., Jingrui, H., Kocher, M., (2016) ``Comparing Random Forest with Logistic Regression for Predicting Class-Imbalanced Civil War Onset Data.'' _Political Analysis_, 24(1): 87-103.
 
+***
 
 #### __*Tuesday, August 23: Unsupervised learning and dimensionality reduction [KB]*__
 Cluster analysis, PCA, correspondence analysis, association rules.
@@ -267,6 +271,7 @@ Cluster analysis, PCA, correspondence analysis, association rules.
 * Lantz, Chapters 8-9
 * Leskovec et al., Chapter 11.
 
+***
 
 #### __*Wednesday, August 24: Text analysis [KB]*__
 Working with text in R, sentiment analysis, dictionary methods.
@@ -287,6 +292,7 @@ Working with text in R, sentiment analysis, dictionary methods.
 * Spirling, A. (2012), ``U.S. Treaty Making with American Indians: Institutional Change and Relative Power, 1784–1911.'' _American Journal of Political Science_, 56: 84--97.
 * Herzog, A. and K. Benoit (2015), ``The most unkindest cuts: Speaker selection and expressed government dissent during economic crisis.'' _Journal of Politics_, 77(4):1157--1175.
 
+***
 
 #### __*Thursday, August 25: Topic modelling [JB]*__
 
@@ -311,6 +317,7 @@ Working with text in R, sentiment analysis, dictionary methods.
 * Mimno, D. (April 2012). ``Computational Historiography: Data Mining in a Century of Classics Journals.'' _Journal on Computing and Cultural Heritage_, 5 (1).
 * Lesmeister Chapter 12.
 
+***
 
 #### __*Friday, August 26: Mining the Social Web [KB, JB]*__
 Working with the Twitter API, Facebook API, JSON data, and examples.
