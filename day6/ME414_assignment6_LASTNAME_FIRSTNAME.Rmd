@@ -1,82 +1,37 @@
 ---
-title: "Assignment 6 - Association rules and clustering"
+title: "Exercise 6 - Nonlinear Models and Tree-based Methods"
 author: "Ken Benoit and Slava Mikhaylov"
 output: html_document
 ---
 
-Assignments for the course focus on practical aspects of the concepts covered in the lectures. Assignments are largely based on the material covered in James et al. (2013). You will start working on the assignment in the lab sessions after the lectures, but may need to finish them after class.
+Assignments for the course focus on practical aspects of the concepts covered in the lectures. Assignments are based on the material covered in James et al. You will start working on the assignment in the lab sessions after the lectures, but may need to finish them after class.
 
-You will be asked to submit your assignments via Moodle by 7pm on the day of the class. We will subsequently open up solutions to the problem sets. 
-
-## Exercise 6.1
-
-Suppose that we have four observations, for which we compute a dissimilarity matrix, given by
-
-$$\left[ \begin{array}{ccc}
- & 0.3 & 0.4 & 0.7 \\
-0.3 &  & 0.5 & 0.8 \\
-0.4 & 0.5 &  & 0.45 \\
-0.7 & 0.8 & 0.45 &  
-\end{array} \right]$$
-
-For instance, the dissimilarity between the first and second observations is 0.3, and the dissimilarity between the second and fourth observations is 0.8.
-
-(a) On the basis of this dissimilarity matrix, sketch the dendrogram that results from hierarchically clustering these four observations.  Use any type of *linkage* that you wish, but try to indicate which you have used.  (See James et al. 2013, pp395-396)
-
-(b) Compare these result to the plot of the dendrogram in R.  You can use `hclust()` to create the clusters, and the `plot()` method for this object to plot it.  See `?hclust` to see the options for linkage.  To get you started: 
-
-```{r}
-d <-  as.dist(matrix(c(0, 0.3, 0.4, 0.7, 
-                     0.3, 0, 0.5, 0.8,
-                     0.4, 0.5, 0.0, 0.45,
-                     0.7, 0.8, 0.45, 0.0), nrow=4))
-hc1 <- hclust(d, method="complete")
-```
-
-(c) Suppose that we cut the dendrogram obtained in (b) such that two clusters result. Which observations are in each cluster?
-(d) It is mentioned in this theoretical topic that at each fusion in the dendrogram, the position of the two clusters being fused can be swapped without changing the meaning of the dendrogram. Draw a dendrogram that is equivalent to the dendrogram in (a), for which two or more of the leaves are repositioned, but for which the meaning of the dendrogram is the same.
-
-## Exercise 6.2
-
-In this problem, you will perform $K$-means clustering manually, with $K = 2$, on a small example with $n = 6$ observations and $p = 2$ features. The observations are as follows.
-
-|Obs.|X1|X2|
-|--|--|--|
-|1 |1 |4 |
-|2 |1 |3 |
-|3 |0 |4 |
-|4 |5 |1 |
-|5 |6 |2 |
-|6 |4 |0 |
+Please submit your assignments via Moodle by 7pm on the day of the class. We will subsequently open up solutions to the problem sets. 
 
 
-(a) Plot the observations with $X1$ on the $x$-axis and $X2$ on the $y$-axis.
-(b) Randomly assign a cluster label to each observation. You can use the `sample()` command in R to do this. Report the cluster labels for each observation.
-(c) Compute the centroid for each cluster.
-(d) **OPTIONAL** Assign each observation to the centroid to which it is closest, in terms of Euclidean distance. Report the cluster labels for each observation.
-(e) **OPTIONAL** Repeat (c) and (d) until the answers obtained stop changing.
-(f) In your plot from (a), color the observations according to the cluster labels obtained.
+### Exercise 6.1
+
+This question relates to the `College` dataset from the `ISLR` package.
+
+(a) Split the data into a training set and a test set. Using out-of-state tuition as the response and the other variables as the predictors, perform forward stepwise selection on the training set in order to identify a satisfactory model that uses just a subset of the predictors.
+(b) Fit a GAM on the training data, using out-of-state tuition as the response and the features selected in the previous step as the predictors. Plot the results, and explain your findings.
+(c) Evaluate the model obtained on the test set, and explain the results obtained.
+(d) For which variables, if any, is there evidence of a non-linear relationship with the response?
+
+### Exercise 6.2 
+
+Apply boosting, bagging, and random forests to a data set of your choice. Be sure to fit the models on a training set and to evaluate their performance on a test set. How accurate are the results compared to simple methods like linear or logistic regression? Which of these approaches yields the best performance?
+
+### Exercise 6.3 (Optional)
+
+We now use boosting to predict `Salary` in the `Hitters` dataset, which is part of the `ISLR` package.
+
+(a) Remove the observations for whom the salary information is unknown, and then log-transform the salaries.
+(b) Create a training set consisting of the first 200 observations, and a test set consisting of the remaining observations.
+(c) Perform boosting on the training set with 1,000 trees for a range of values of the shrinkage parameter $\lambda$. Produce a plot with different shrinkage values on the $x$-axis and the corresponding training set MSE on the $y$-axis.
+(d) Produce a plot with different shrinkage values on the $x$-axis and the corresponding test set MSE on the $y$-axis.
+(e) Compare the test MSE of boosting to the test MSE that results from applying two of the regression approaches seen in our discussions of regression models.
+(f) Which variables appear to be the most important predictors in the boosted model?
+(g) Now apply bagging to the training set. What is the test set MSE for this approach?
 
 
-## Exercise 6.3
-
-In the section, we mentioned the use of correlation-based distance and Euclidean distance as dissimilarity measures for hierarchical clustering. It turns out that these two measures are almost equivalent: if each observation has been centred to have mean zero and standard deviation one, and if we let $r_{ij}$ denote the correlation between the $i$ th and $j$ th observations, then the quantity $1 − r_{ij}$ is proportional to the squared Euclidean distance between the $i$ th and $j$ th observations.
-
-On the `USArrests` data, part of the base `R` distribution, show that this proportionality holds.
-
-*Hint: The Euclidean distance can be calculated using the `dist()` function, and correlations can be calculated using the `cor()` function.*
-
-
-## Exercise 6.4
- 
-Consider the `USArrests` data, which is part of the base `R` distribution. We will now perform hierarchical clustering on the states.
-
-(a) Using hierarchical clustering with complete linkage and Euclidean distance, cluster the states.
-(b) Cut the dendrogram at a height that results in three distinct clusters. Which states belong to which clusters?
-(c) Hierarchically cluster the states using complete linkage and Euclidean distance, *after scaling the variables to have standard deviation one*.  (You can use the `scale()` command for this.
-```{r}
-USArrestsStandardized <- scale(USArrests)
-apply(USArrestsStandardized, 2, mean)  # are these now zero?
-apply(USArrestsStandardized, 2, sd)    # are these now one?
-```
-(d) What effect does scaling the variables have on the hierarchical clustering obtained? In your opinion, should the variables be scaled before the inter-observation dissimilarities are computed? Provide a justification for your answer. 

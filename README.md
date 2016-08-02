@@ -249,7 +249,7 @@ GAMs, local regression, decision trees, random forest, boosting.
 
 ***
 
-#### __*Tuesday, August 23: Unsupervised learning and dimensionality reduction [KB]*__
+#### __*Tuesday, August 23: Unsupervised learning and dimensional reduction [KB]*__
 Cluster analysis, PCA, correspondence analysis, association rules.
 
 ##### Resources

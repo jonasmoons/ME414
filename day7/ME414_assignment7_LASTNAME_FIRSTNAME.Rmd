@@ -1,73 +1,42 @@
 ---
-title: "Assignment 7 - Machine Learning"
+title: "Exercise 7 - Unsupervised Learning and dimensional reduction"
 author: "Ken Benoit and Slava Mikhaylov"
 output: html_document
 ---
 
-Assignments for the course focus on practical aspects of the concepts covered in the lectures. Assignments are largely based on the material covered in James et al. (2013). You will start working on the assignment in the lab sessions after the lectures, but may need to finish them after class.
+Assignments for the course focus on practical aspects of the concepts covered in the lectures. Assignments are based on the material covered in James et al. You will start working on the assignment in the lab sessions after the lectures, but may need to finish them after class.
 
-You will be asked to submit your assignments via Moodle by 7pm on the day of the class. We will subsequently open up solutions to the problem sets. 
+Please submit your assignments via Moodle by 7pm on the day of the class. We will subsequently open up solutions to the problem sets. 
 
-### Exercise summary
 
-This exercise revisits regression as a "machine learning" tool, both for linear and logisitic regression, as well as simple machine learning using the Naive Bayes and kNN algorithms.   
+### Exercise 7.1
 
-For this execise we will use the Stata dataset  `dail2002.dta` from the article Kenneth Benoit and Michael Marsh. 2008. "[The Campaign Value of Incumbency: A New Solution to the Puzzle of Less Effective Incumbent Spending.](http://www.kenbenoit.net/pdfs/ajps_348.pdf)" *American Journal of Political Science* 52(4, October): 874-890.  This is available directly  [here](http://www.kenbenoit.net/files/dail2002.dta).  To load this into R, you will need the `read.dta` command from the `foreign` package.  (Note that you can load straight from the URL using this command.)  Call this data object `dail2002`. 
-```{r}
-require(foreign, quietly = TRUE)
-dail2002 <- read.dta("http://www.kenbenoit.net/files/dail2002.dta")
-```
-    
-1.  **Partitioning the dataset into "folds".**  For this exercise, we will be fitting a model from 
-    a subset of the data, and using the fitted model to predict the outcomes from the "left out" set 
-    and using that to evaluate root mean squared error (RMSE) or accuracy.
-    
-    Use the `sample()` command to draw a random sample of one-fifth of the observations in the `dail2002.dta` dataset as a test set, and four-fifths to be a training set.
-    ```{r}
-    dail2002$tclass <- sample(c("test", "train"), nrow(dail2002), replace = TRUE, prob = c(.2, .8))
-    reg2_1 <- lm(votes1st ~ spend_total * incumb, data = dail2002, subset = (tclass=="train"))
-    ```
-    
-    We will use this indicator variable `tclass` to partition the dataset in the questions below.  Be sure you understand how we used the `sample()` command this way!
-    
-2.  **OLS regression for prediction.**
+Consider the `USArrests` data. We will now perform hierarchical clustering on the states.
 
-    1.  Fit a regression from the dataset to predict `votes1st`.  You may use any combination of
-        regressors that you wish.  Save the model object to `reg2_1`.
-        
-    2.  Predict the `votes1st` from the same sample to which you fitted the regression.  What is the 
-        Root Mean Squared Error (RMSE) and how would you interpret this?
-        
-    3.  Drop the incumbency variable -- that you hopefully included in your answer to 2.1! -- and
-        repeat steps 2.1--2.2.  Compute a new RMSE and compare this to the previous one.  Which
-        is a better predictor?
-        
-3.  **Logistic regression for prediction**.
+(a) Using hierarchical clustering with complete linkage and Euclidean distance, cluster the states.
+(b) Cut the dendrogram at a height that results in three distinct clusters. Which states belong to which clusters?
+(c) Hierarchically cluster the states using complete linkage and Euclidean distance, after scaling the variables to have standard deviation one.
+(d) What effect does scaling the variables have on the hierarchical clustering obtained? In your opinion, should the variables be scaled before the inter-observation dissimilarities are computed? Provide a justification for your answer.
 
-    1.  Fit a logistic regression (hint: use `glm()`) to predict the outcome variable `wonseat`.  Use 
-        any specification that you think provides a good prediction.
-    
-    2.  For the full sample, compute:
-        
-        *  a table of actual `wonseat` by predicted `wonseat`
-        *  percent correctly predicted
-        *  precision
-        *  recall
-    
-    3.  Comparing two models.
-    
-        *  Compute an 8-fold validation, where for 8 different training sets consisting of 7/8 of the observations, you predict the other held-out 1/8 and compare the actual to predicted for the 1/8 test set.  Compute an average F1 score for the 8 models.
-        
-        *  Now drop a variable or two, and repeat the previous step to compare the average F1 score for this model.
-        
-        *  Why is it valuable to use the different folds here, rather than simply comparing the F1 score for the predicted outcome of the entire sample, fit to the entire sample?
-    
-    
-4.  **kNN prediction.**
+### Exercise 7.2
 
-    1.  Fit a $k=1$ kNN model to predict the same specification as in your logistic regression.  Compare the 
-        percent correctly predicted.  Which model worked better?  (Note: You can use the whole sample here, so that this will compare the results to those from 3.1).
-        
-    2.  Experiment with two more settings of $k$ to see how this affects prediction, reporting the percent
-        correctly predicted.
+In this problem, you will generate simulated data, and then perform PCA and K-means clustering on the data.
 
+(a) Generate a simulated data set with 20 observations in each of three classes (i.e. 60 observations total), and 50 variables.
+*Hint: There are a number of functions in `R` that you can use to generate data. One example is the `rnorm()` function; `runif()` is another option. Be sure to add a mean shift to the observations in each class so that there are three distinct classes.*
+(b) Perform PCA on the 60 observations and plot the first two principal component score vectors. Use a different color to indicate the observations in each of the three classes. If the three classes appear separated in this plot, then continue on to part (c). If not, then return to part (a) and modify the simulation so that there is greater separation between the three classes. Do not continue to part (c) until the three classes show at least some separation in the first two principal component score vectors.
+(c) Perform $K$-means clustering of the observations with $K = 3$. How well do the clusters that you obtained in $K$-means clustering compare to the true class labels?
+*Hint: You can use the `table()` function in `R` to compare the true class labels to the class labels obtained by clustering. Be careful how you interpret the results: $K$-means clustering will arbitrarily number the clusters, so you cannot simply check whether the true class labels and clustering labels are the same.*
+(d) Perform $K$-means clustering with $K = 2$. Describe your results.
+(e) Now perform $K$-means clustering with $K = 4$, and describe your
+results.
+(f) Now perform $K$-means clustering with $K = 3$ on the first two principal component score vectors, rather than on the raw data. That is, perform $K$-means clustering on the $60 \times 2$ matrix of which the first column is the first principal component score vector, and the second column is the second principal component score vector. Comment on the results.
+(g) Using the `scale()` function, perform $K$-means clustering with $K = 3$ on the data after scaling each variable to have standard deviation one. How do these results compare to those obtained in (b)? Explain.
+
+### Exercise 7.3 (Optional)
+
+On the main textbook website, www.StatLearning.com, there is a gene expression data set (`Ch10Ex11.csv`) that consists of 40 tissue samples with measurements on 1,000 genes. The first 20 samples are from healthy patients, while the second 20 are from a diseased group.
+
+(a) Load in the data using `read.csv()`. You will need to select `header=FALSE`.
+(b) Apply hierarchical clustering to the samples using correlation-based distance, and plot the dendrogram. Do the genes separate the samples into the two groups? Do your results depend on the type of linkage used?
+(c) Your collaborator wants to know which genes differ the most across the two groups. Suggest a way to answer this question, and apply it here.
