@@ -128,8 +128,8 @@ We will use this session to get to know the range of interests and experience st
 ##### Resources
 * [Lecture Notes](day1/ME414_day1.pdf)
 * [Assignment 1 as R markdown](day1/ME414_assignment1_LASTNAME_FIRSTNAME.Rmd)
+* Assignment 1 **solution** as [R markdown](day1/ME414_assignment1_solution.Rmd)
 
-<!--- * Assignment 1 **solution** as [R markdown](day1/ME414_assignment1_solution.Rmd) or [R code](day1/ME414_assignment1_solution.R) -->
 <!--- * [The results of the data science quiz](http://htmlpreview.github.com/?https://github.com/kbenoit/ME414/blob/master/day1/data_science_quiz.html) and the [anonymized dataset in .csv format](day1/data_science_quiz_results.csv). -->
 
 ##### Required reading:
@@ -157,8 +157,7 @@ Data types and formats, record cleaning, linkage, SQL, JSON, massive data proces
 
 * [Lecture Notes](day2/ME414_day2.pdf)
 * [Assignment 2 as R markdown](day2/ME414_assignment2_LASTNAME_FIRSTNAME.Rmd)
-
-<!--- * Assignment 2 **solution** as [R markdown](day2/ME414_assignment2_solution.Rmd) -->
+* Assignment 2 **solution** as [R markdown](day2/ME414_assignment2_solution.Rmd)
 
 ##### Required reading:
 * Grolemund and Wickham, Chapters 4, 8-10.
@@ -179,8 +178,7 @@ The basic linear regression model, with a focus on prediction.
 
 * [Lecture Notes](day3/ME414_day3.pdf)
 * [Assignment 3 as R markdown](day3/ME414_assignment3_LASTNAME_FIRSTNAME.Rmd)
-
-<!--- * Assignment 3 **solution** as [R markdown](day3/ME414_assignment3_solution.Rmd) -->
+* Assignment 3 **solution** as [R markdown](day3/ME414_assignment3_solution.Rmd)
 
 ##### Required reading:
 *  James et al., Chapter 3.
@@ -198,8 +196,7 @@ Logistic regression, discriminant analysis, Naive Bayes, evaluating model perfor
 
 * [Lecture Notes](day4/ME414_day4.pdf)
 * [Assignment 4 as R markdown](day4/ME414_assignment4_LASTNAME_FIRSTNAME.Rmd) 
-
-<!--- * Assignment 4 **solution** as [R markdown](day4/ME414_assignment4_solution.Rmd) -->
+* Assignment 4 **solution** as [R markdown](day4/ME414_assignment4_solution.Rmd)
 
 ##### Required reading:
 * James et al., Chapter 4.
@@ -218,8 +215,7 @@ Cross-validation, bootstrap, ridge and lasso.
 
 * [Lecture Notes](day5/ME414_day5.pdf)
 * [Assignment 5 as R markdown](day5/ME414_assignment5_LASTNAME_FIRSTNAME.Rmd)
-
-<!--- * Assignment 5 **solution** as [R markdown](day5/ME414_assignment5_solution.Rmd) -->
+* Assignment 5 **solution** as [R markdown](day5/ME414_assignment5_solution.Rmd)
 
 ##### Required reading:
 * James et al., Chapter 5-6.
@@ -236,8 +232,7 @@ GAMs, local regression, decision trees, random forest, boosting.
 
 * [Lecture Notes](day6/ME414_day6.pdf)
 * [Assignment 6 as R markdown](day6/ME414_assignment6_LASTNAME_FIRSTNAME.Rmd) 
-
-<!--- * Assignment 6 **solution** as [R markdown](day6/ME414_assignment6_solution.Rmd) -->
+* Assignment 6 **solution** as [R markdown](day6/ME414_assignment6_solution.Rmd)
 
 ##### Required reading:
 * James et al., Chapter 7-8.
@@ -259,8 +254,7 @@ Cluster analysis, PCA, correspondence analysis, association rules.
 * Association rule mining code example
     + [R code](day7/apriori_example.R)
     + [book dataset for example](https://github.com/WinVector/zmPDSwR/raw/master/Bookdata/bookdata.tsv.gz)
-
-<!--- * Assignment 7 **solution** as [R markdown](day7/ME414_assignment7_solution.Rmd) or [html](http://htmlpreview.github.io/?https://github.com/kbenoit/ME414/blob/master/day7/ME414_assignment7_solution.html) -->
+* Assignment 7 **solution** as [R markdown](day7/ME414_assignment7_solution.Rmd)
 
 ##### Required reading:
 * James et al., Chapter 10.
@@ -281,8 +275,7 @@ Working with text in R, sentiment analysis, dictionary methods.
 * [Lecture Notes](day8/ME414_day8.pdf)
 * [Assignment 8 as R markdown](day8/ME414_assignment8_LASTNAME_FIRSTNAME.Rmd) or [html](http://htmlpreview.github.io/?https://github.com/kbenoit/ME414/blob/master/day8/ME414_assignment8_LASTNAME_FIRSTNAME.html)
     + sample zip file [`UKimmigTexts.zip`](day8/UKimmigTexts.zip) of texts for building a corpus
-
-<!--- * Assignment 8 **solution** as [R markdown](day8/ME414_assignment8_solution.Rmd) or [html](http://htmlpreview.github.io/?https://github.com/kbenoit/ME414/blob/master/day8/ME414_assignment8_solution.html) -->
+* Assignment 8 **solution** as [R markdown](day8/ME414_assignment8_solution.Rmd)
 
 ##### Required reading:
 * Grimmer, J, and B M Stewart (2013), ``Text as Data: the Promise and Pitfalls of Automatic Content Analysis Methods for Political Texts.'' _Political Analysis_.
@@ -300,8 +293,7 @@ Working with text in R, sentiment analysis, dictionary methods.
 
 * [Lecture Notes](day9/ME414_day9.pdf)
 * [Assignment 9 as R markdown](day9/ME414_assignment9_LASTNAME_FIRSTNAME.Rmd)
-
-<!--- * Assignment 9 **solution** as [R markdown](day9/ME414_assignment9_solution.Rmd) or [html](http://htmlpreview.github.io/?https://github.com/kbenoit/ME414/blob/master/day9/ME414_assignment9_solution.html) -->
+* Assignment 9 **solution** as [R markdown](day9/ME414_assignment9_solution.Rmd)
 
 
 ##### Required reading:
