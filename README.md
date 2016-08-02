@@ -31,6 +31,7 @@ The course will be delivered as a series of morning lectures, followed by lab se
 * quantitative methods of text analysis, including mining social media and other online resources
 
 
+
 ### Prerequisites
 
 An introduction to quantitative methods at any level would serve as a very useful foundation for this course, although no formal prerequisites are required. Familiarity with computer programming or database structures is a benefit, but not formally required.
@@ -119,8 +120,10 @@ You can also subscribe to the repository if you have [a GitHub account](https://
 **Jack Blumenau** is a PhD student at LSE Government Department, starting in the autumn his postdoc at LSE Methodology Department. Jack serve as the lab assistant for this course and deliver one of the sessions related to his PhD research.
 
 
+
 ### Course Schedule
 
+***
 
 #### __*Monday, August 15: Overview and introduction to data science [KB, SM]*__
 We will use this session to get to know the range of interests and experience students bring to the class, as well as to survey the machine learning approaches to be covered. We will also discuss and demonstrate the R software.
