@@ -62,7 +62,7 @@ The focus will be on exploring some of the data structures in R and on implement
         dail2002 <- read.dta("http://www.kenbenoit.net/files/dail2002.dta")
         ```
     
-    b.  Filtering:  Select only the Fianna Fail candidates using `filter()`, and assign the filtered `data.frame` to `dail2002FF`.  Note that you might want to first find out what are the labels for party by using `summary()` on the `party` variable.
+    b.  Filtering:  Select only the Fianna Fail candidates using `filter()`, and assign the filtered `data.frame` to `dail2002FF`.  Note that you might want to first find out what are the labels for party by using `summary()` on the `party` variable. Also note that you will first need to run `install.packages("dplyr")` in the console to install the `dplyr` package, if you haven't already.
     
         ```{r}
         require(dplyr)
