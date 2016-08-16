@@ -12,16 +12,9 @@ Please submit your assignments via Moodle by 7pm on the day of the class. We wil
 
 The focus will be on exploring some of the data structures in R and on implementing some of the data restructuring from the `dplyr` and the `reshape2` packages.
 
-1.  Installing R Studio
-
-    1.  Your first assignment is to get RStudio installed and working for your platform.   
-    2.  Save this file locally to your own computer, replacing the LASTNAME and FIRSTNAME parts of the filename with your own name.  Otherwise, we cannot tell whose assignments are whose!
-    3.  Next, make sure you have the installed the packages required to knit this document into html.
-
-
 1.  Working with data structures in R
 
-    1.  Execute and example the following object:
+    a.  Execute and example the following object:
         ```{r}
         obj1_1 <- read.table(text = "
                              a  b    c    d 
@@ -32,7 +25,7 @@ The focus will be on exploring some of the data structures in R and on implement
         Was this what you were expecting?  Why not?
         
 
-    2.  Modify the above command and rerun it with the `header=TRUE` argument, assigning
+    b.  Modify the above command and rerun it with the `header=TRUE` argument, assigning
         the result to a new object `obj2_1`.
         Examine the object's structure using `str(obj2_1)`.  Was this what you were expecting?
         Try correcting the input by specifying a `stringsAsFactors` argument to `read.table`.
@@ -46,30 +39,30 @@ The focus will be on exploring some of the data structures in R and on implement
          ```
 
 
-    3.  Modify the object so that:
+    c.  Modify the object so that:
         *  `b` is integer
         *  `d` is *not* a factor
         
 
-    4.  Did you have trouble getting `b` to coerce to an integer, try first removing the "L"
+    d.  Did you have trouble getting `b` to coerce to an integer, try first removing the "L"
         using `gsub()` to replace the `"L"` with `""`.  Get help on this using `?gsub`.
         
 
-    5.  Finally, make this object into a data.frame, using `data.frame`.  Print the output.  Does it look correct?
+    e.  Finally, make this object into a data.frame, using `data.frame`.  Print the output.  Does it look correct?
     
 
 2.  Working with the `dplyr` package
 
     For this part and the next, you should work with the file `dail2002.dta` from the article Kenneth Benoit and Michael Marsh. 2008. "[The Campaign Value of Incumbency: A New Solution to the Puzzle of Less Effective Incumbent Spending.](http://www.kenbenoit.net/pdfs/ajps_348.pdf)" *American Journal of Political Science* 52(4, October): 874-890.   
     
-    1.  Load the Stata dataset used in this paper, available [here](http://www.kenbenoit.net/files/dail2002.dta).  To load this into R, you will need the `read.dta` command from the `foreign` package.  (Note that you can load straight from the URL using this command.)  Call this data object `dail2002`.  What sort of object is this?  How can you tell what sort of object it is?
+    a.  Load the Stata dataset used in this paper, available [here](http://www.kenbenoit.net/files/dail2002.dta).  To load this into R, you will need the `read.dta` command from the `foreign` package.  (Note that you can load straight from the URL using this command.)  Call this data object `dail2002`.  What sort of object is this?  How can you tell what sort of object it is?
     
         ```{r}
         require(foreign)
         dail2002 <- read.dta("http://www.kenbenoit.net/files/dail2002.dta")
         ```
     
-    2.  Filtering:  Select only the Fianna Fail candidates using `filter()`, and assign the filtered `data.frame` to `dail2002FF`.  Note that you might want to first find out what are the labels for party by using `summary()` on the `party` variable.
+    b.  Filtering:  Select only the Fianna Fail candidates using `filter()`, and assign the filtered `data.frame` to `dail2002FF`.  Note that you might want to first find out what are the labels for party by using `summary()` on the `party` variable.
     
         ```{r}
         require(dplyr)
@@ -80,7 +73,7 @@ The focus will be on exploring some of the data structures in R and on implement
         
     
         
-    3.  Summarizing FF candidates per constituency.  On the new data frame `dail2002FF`, summarize the median spending (`spend_total`) for FF candidates using the `dplyr` function `summarise`.  Use "pipes" for extra credit!
+    c.  Summarizing FF candidates per constituency.  On the new data frame `dail2002FF`, summarize the median spending (`spend_total`) for FF candidates using the `dplyr` function `summarise`.  Use "pipes" for extra credit!
         
         Sort and plot the 42 median spending values using an index plot. 
 
