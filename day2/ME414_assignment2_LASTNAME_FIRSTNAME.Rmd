@@ -55,14 +55,14 @@ The focus will be on exploring some of the data structures in R and on implement
 
     For this part and the next, you should work with the file `dail2002.dta` from the article Kenneth Benoit and Michael Marsh. 2008. "[The Campaign Value of Incumbency: A New Solution to the Puzzle of Less Effective Incumbent Spending.](http://www.kenbenoit.net/pdfs/ajps_348.pdf)" *American Journal of Political Science* 52(4, October): 874-890.   
     
-    a.  Load the Stata dataset used in this paper, available [here](http://www.kenbenoit.net/files/dail2002.dta).  To load this into R, you will need the `read.dta` command from the `foreign` package.  (Note that you can load straight from the URL using this command.)  Call this data object `dail2002`.  What sort of object is this?  How can you tell what sort of object it is?
+    a.  Load the Stata dataset used in this paper, available [here](http://www.kenbenoit.net/files/dail2002.dta).  To load this into R, you will need the `read.dta` command from the `foreign` package.  (Note that you can load straight from the URL using this command.)  Call this data object `dail2002`.  What sort of object is this?  How can you tell what sort of object it is? Note that before you can execute this code, you will need to run `install.packages("foreign")` in the console to install the `foreign` package (unless you have done so already). The same goes for other packages in this exercise.
     
         ```{r}
         require(foreign)
         dail2002 <- read.dta("http://www.kenbenoit.net/files/dail2002.dta")
         ```
     
-    b.  Filtering:  Select only the Fianna Fail candidates using `filter()`, and assign the filtered `data.frame` to `dail2002FF`.  Note that you might want to first find out what are the labels for party by using `summary()` on the `party` variable. Also note that you will first need to run `install.packages("dplyr")` in the console to install the `dplyr` package, if you haven't already.
+    b.  Filtering:  Select only the Fianna Fail candidates using `filter()`, and assign the filtered `data.frame` to `dail2002FF`.  Note that you might want to first find out what are the labels for party by using `summary()` on the `party` variable. 
     
         ```{r}
         require(dplyr)
